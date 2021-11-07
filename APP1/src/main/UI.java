@@ -25,29 +25,31 @@ public class UI extends JFrame {
     private JPanel myPanel;
     private static final int ANCHO=400;
     private static final int ALTO=680;
-    
-    public boolean continua=true;
+ //BOOLEANS Thread 1 :: Permiten al HILO 1 no entrar en el if() dentro
+    //del switch() en el metodo start() del HILO 1 : Hilo 1 = SwingWorker 
+       
+    public boolean continua=true;// StatesApp.QUIT (?)
     public boolean menuPintado=false;
     public boolean settsPintado=false;
     public boolean playPintado=false;
-    
+  // Las diferentes Escenas pintadas en el Frame   
     public  PLAYING p;
     public MENU m;
     public Integer value=0;
     
-    private Thread T1=null;
+    
     UI(){
 //        T1= new Thread(this);
         setSize(ANCHO, ALTO);
         setBackground(new Color(0x123456));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        
+    //panel principal unido directamente al frame    
         myPanel=new JPanel ();
         initMainPanel();
         add(myPanel);
         
-        // T1.start();
+       //EMPIEZA EL HILO SWING WORKER
         start();
         setVisible(true);
     }
